@@ -1,0 +1,9 @@
+- model: auth.user
+  pk: 1
+  fields:
+    first_name: "System"
+    last_name: "User"
+    password: pbkdf2_sha256$260000$nB4ukMlyaK3IbMfkt1SHQJ$c1EcnKx5992eihZIgz7dUJXwcljloXyHGFWr6HbJoas=
+    username: admin
+    is_active: true
+    email: admin@teste.com

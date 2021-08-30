@@ -1,0 +1,30 @@
+---
+version: '3'
+services:
+
+  customer:
+    build: .
+    command: "/opt/app/start.sh"
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    restart: always
+    environment:
+      API_USERNAME: admin
+      API_PASSWORD: teste123
+      DEBUG: 0
+      ALLOWED_HOSTS: localhost
+      DB_DEFAULT: remote
+      DB_USER: postgres
+      DB_PASSWORD: pg123
+      DB_HOST: postgres
+      PRODUCT_ENDPOINT: http://challenge-api.luizalabs.com/api/product/<ID>/
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: pg123
+    ports:
+      - "5432:5432"
