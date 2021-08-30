@@ -23,7 +23,7 @@ http://localhost:8000/swagger/
 │    ├─── tests        Testes automatizados
 │    └─── views        Camada de exposição dos serviços (endpoints)
 └─── customer         
-     ├─── settings.py      Arquivo de configuração
+     └─── settings.py      Arquivo de configuração
 ```    
 
 ## Setup
@@ -94,7 +94,7 @@ BODY
 
 ### Exemplo: Recuperando a lista de produtos favoritos
 ```
-GET http://localhost:8000/app/customer/<ID_DO_CLIENTE>/favorite/
+GET http://localhost:8000/app/customer/<ID_DO_CLIENTE>/favorite/?page=1
 
 HEADER 
 content-type: application/json

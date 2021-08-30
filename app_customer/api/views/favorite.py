@@ -2,7 +2,7 @@ import logging
 
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse
-from drf_yasg.openapi import Schema, TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY, Items
+from drf_yasg.openapi import Schema, TYPE_OBJECT, TYPE_STRING, TYPE_ARRAY, Items, Parameter, IN_QUERY
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -61,6 +61,7 @@ class FavoriteView(APIView):
         return JsonResponse(favorite_dto.__dict__, status=status.HTTP_201_CREATED)
 
     @swagger_auto_schema(operation_description="View a customer's favorite list",
+                         manual_parameters=[Parameter('page', IN_QUERY, type='int', description='Page number')],
                          responses={200: Schema(
                              type=TYPE_ARRAY,
                              items=Items(type=TYPE_OBJECT, properties={

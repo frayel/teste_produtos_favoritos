@@ -33,6 +33,13 @@ class ApiFavoriteTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(FavoriteModel.objects.count(), 1)
         self.assertEqual(FavoriteModel.objects.get().product, UUID("79b1c283-00ef-6b22-1c8d-b0721999e2f0"))
+        data = {
+            "product": "4bd442b1-4a7d-2475-be97-a7b22a08a024",
+        }
+        response = self.client.post(url, json.dumps(data), content_type="text/plain")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(FavoriteModel.objects.count(), 2)
+
 
     def test_api_add_favorite_without_authentication(self):
         url = reverse("favorite", kwargs={'customer_id': '11111111-1111-1111-1111-111111111111'})
